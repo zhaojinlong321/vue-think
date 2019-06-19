@@ -1,0 +1,62 @@
+main.js{
+	引入---vue，icon，lang，element ui，js-cookie，router，permission
+           图标：icon---01:创建SvgIcon组件
+                        02：创建icons文件夹
+			     src跟目录下创建icons文件夹，里面创建svg文件夹和index.js文件
+			     svg文件夹中用来存放各种扩展的.svg图标。
+                        03：main.js中引入
+			     import './icons'
+                        04：下载插件
+			    cnpm i svg-sprite-loader --save
+			05.配置
+在build/webpack.base.conf.js文件中，加入
+      
+				{
+        
+					test: /\.svg$/,
+        
+					loader: 'svg-sprite-loader',
+        
+					include: [resolve('src/icons')],
+        
+					options: {
+          
+						symbolId: 'icon-[name]'
+        
+					}
+     
+				 }
+
+
+			   并在以下设置中添加exclude: [resolve('src/icons')],,如下所示
+      
+				{
+        
+					test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        
+					loader: 'url-loader',
+        
+					exclude: [resolve('src/icons')],
+        
+					options: {
+          
+						limit: 10000,
+          
+						name: utils.assetsPath('img/[name].[hash:7].[ext]')
+        
+					}
+      
+			  },
+
+			06.<svg-icon icon-class="user" />
+
+
+	   语言：lang---01：先创建一个lang 文件夹,创建两个js文件en.js(英文), zh.js(中文), 另外创建一个index.js文件
+                        02：在index.js 中引入vue和vue-i18n, 并注册vue-i18n 然后 引入en.js和zh.js两个文件
+			03：将i18n引入main.js, 并在初始化注册 
+
+
+
+
+api---utils--request.js(引入axios)--api-user.js（引入request）
+

@@ -1,0 +1,11 @@
+npm install axios
+
+npm i element-ui -S
+
+npm install vue-i18n
+
+npm install node-sass --save-dev
+npm install sass-loader --save-dev
+
+npm install js-cookie --save
+npm install normalize.css
